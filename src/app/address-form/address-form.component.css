@@ -1,0 +1,39 @@
+#form-container {
+
+  background-color: white;
+  align-content: center;
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  margin-left: 120px;
+  margin-right:120px;
+  resize: vertical
+}
+
+
+input {
+
+  width: 80%;
+  margin-bottom: 10px;
+
+}
+
+
+
+#lat-output, #lng-output{
+
+  background-color:#dadee5;
+
+}
+
+#googleMap {
+  height:500px;
+  width:80%;
+  margin:auto;
+  margin-left: 120px;
+  margin-right:120px;
+}

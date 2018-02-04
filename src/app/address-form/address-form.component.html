@@ -1,0 +1,12 @@
+<div>
+<div id="form-container">
+<form id= "form"  (keyup)="handleAddressInput($event)" [formGroup]="addressForm" novalidate >
+  <input class="input-box" id="address-input" placeholder="Address" formControlName="selectedAddress" >
+  <input class="input-box" id="lat-output"  placeholder="Latitude" value={{latOutput}}>
+  <input class="input-box" id="lng-output" placeholder="Longitude"value={{lngOutput}} >
+</form>
+</div>
+
+<div id="googleMap" #googlemap ></div>
+
+</div>
