@@ -9,15 +9,15 @@ import { } from '@types/googlemaps';
 export class AddressFormComponent implements OnInit {
   @ViewChild('googlemap') googlemapElement: any;
   public map: google.maps.Map;
-  public latOutput: number;
-  public lngOutput: number;
+  public latOutput;
+  public lngOutput;
   addressForm : FormGroup;
 
   constructor() { }
 
   ngOnInit() {
-    this.latOutput ='';
-    this.lngOutput ='';
+    this.latOutput ="";
+    this.lngOutput ="";
     this.addressForm = new FormGroup({
       selectedAddress : new FormControl('',{
         validators: Validators.required,

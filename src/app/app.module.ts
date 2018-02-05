@@ -4,14 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AddressFormComponent } from './address-form/address-form.component';
-import { GoogleMapComponent } from './google-map/google-map.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressFormComponent
-    
+
   ],
   imports: [
     BrowserModule,
