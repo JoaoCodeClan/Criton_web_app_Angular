@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { } from '@types/googlemaps';
 @Component({
@@ -13,7 +13,7 @@ export class AddressFormComponent implements OnInit {
   public lngOutput;
   addressForm : FormGroup;
 
-  constructor() { }
+  constructor(private _ngZone: NgZone) { }
 
   ngOnInit() {
     this.latOutput ="";
@@ -37,9 +37,8 @@ export class AddressFormComponent implements OnInit {
 
 
   handleAddressInput(event){
-    console.log(event);
-    if(event.key== "Enter"){
 
+    if(event.key== "Enter"){
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({'address':this.addressForm.value.selectedAddress }, function(results, status) {
         if (status === 'OK') {
@@ -47,12 +46,10 @@ export class AddressFormComponent implements OnInit {
           const lat = result.lat();
           const lng = result.lng();
 
-          console.log(lat);
-          console.log(lng);
-          this.latOutput =lat;
-          this.lngOutput =lng;
-
-
+          this._ngZone.run(() => {
+                      this.latOutput =lat;
+                      this.lngOutput =lng;
+                    });
 
           var updatedGoogleMap = {
             center: new google.maps.LatLng(lat,lng),
@@ -70,7 +67,7 @@ export class AddressFormComponent implements OnInit {
             map: this.map,
             animation: google.maps.Animation.DROP
           });
-          return marker;
+
 
         }else{alert("Address not found.Please check if address is correct.")};
 
